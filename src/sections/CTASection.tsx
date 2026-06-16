@@ -36,7 +36,7 @@ export default function CTASection() {
         background: "linear-gradient(135deg, #1A4A3A 0%, #0D1B17 100%)",
       }}
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-16 md:py-20 text-center">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-16 pb-8 md:py-20 text-center">
         <h2 className="cta-animate font-display font-bold text-3xl md:text-5xl lg:text-6xl text-off-white tracking-tight mb-6">
           Ready to Start Your Project?
         </h2>

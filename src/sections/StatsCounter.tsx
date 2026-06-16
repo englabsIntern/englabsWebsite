@@ -64,7 +64,7 @@ export default function StatsCounter() {
         {stats.map((stat, i) => (
           <div
             key={stat.label}
-            className="flex-1 flex flex-col items-center justify-center py-10 md:py-8"
+            className="flex-1 flex flex-col items-center justify-center py-4 md:py-8"
           >
             <span
               ref={(el) => { numberRefs.current[i] = el; }}

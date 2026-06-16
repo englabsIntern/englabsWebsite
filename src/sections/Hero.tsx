@@ -82,14 +82,14 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen flex items-end pt-24 pb-10 md:pb-16 overflow-hidden"
+      className="relative w-full min-h-0 md:min-h-screen flex items-start md:items-end pt-32 md:pt-24 pb-10 md:pb-16 overflow-hidden"
     >
       {/* Background Image */}
       <div ref={bgRef} className="absolute inset-0 will-change-transform">
         <img
           src="/images/hero-light-bg.png"
           alt="CNC machined precision part"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-[center_25%] md:object-center"
           loading="eager"
           fetchPriority="high"
         />
@@ -111,12 +111,12 @@ export default function Hero() {
         {/* Headline */}
         <h1
           data-hero-anim
-          className="font-display font-extrabold uppercase tracking-tight leading-[0.92] mb-6 max-w-[900px]"
+          className="font-display font-extrabold uppercase tracking-tight leading-[0.92] mb-6 max-w-[900px] text-center md:text-left mx-auto md:mx-0"
         >
           <span className="block text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
             ONE STOP
           </span>
-          <span className="flex items-baseline gap-3 md:gap-5 flex-wrap">
+          <span className="flex flex-col sm:flex-row items-center sm:items-baseline justify-center md:justify-start gap-1 sm:gap-3 md:gap-5">
             <span
               ref={wordRef}
               className="inline-block text-mint text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold"
@@ -137,20 +137,20 @@ export default function Hero() {
         {/* Body text */}
         <p
           data-hero-anim
-          className="font-body text-sm md:text-base text-white/75 leading-relaxed mb-1.5 max-w-[480px]"
+          className="font-body text-sm md:text-base text-white/75 leading-relaxed mb-1.5 max-w-[480px] text-center md:text-left mx-auto md:mx-0"
         >
           For scan, design and manufacturing jobs — as a service.
         </p>
         <p
           data-hero-anim
-          className="font-body text-xs md:text-sm text-white/45 leading-relaxed mb-8 max-w-[480px]"
+          className="font-body text-xs md:text-sm text-white/45 leading-relaxed mb-8 max-w-[480px] text-center md:text-left mx-auto md:mx-0"
         >
           A future-looking startup transforming complex engineering designs
           into flawless realities. ISO 9001:2015 Certified.
         </p>
 
         {/* CTA Buttons */}
-        <div data-hero-anim className="flex flex-wrap gap-3 items-center">
+        <div data-hero-anim className="flex flex-wrap gap-3 items-center justify-center md:justify-start">
           <button
             onClick={() => scrollToSection("#contact")}
             className="group px-7 py-3 rounded-full font-body font-bold text-xs uppercase tracking-wider text-near-black bg-mint hover:bg-white transition-all duration-300 shadow-lg"

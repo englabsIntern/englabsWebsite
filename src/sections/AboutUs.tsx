@@ -210,8 +210,7 @@ export default function AboutUs() {
     <section
       ref={sectionRef}
       id="about-us"
-      className="relative w-full bg-white overflow-hidden border-b border-border-light/10"
-      style={{ paddingTop: "50px", paddingBottom: "50px" }}
+      className="relative w-full bg-white overflow-hidden border-b border-border-light/10 py-10 md:py-[50px]"
     >
       {/* Background Tech Dot Matrix Pattern */}
       <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none select-none"
@@ -222,25 +221,27 @@ export default function AboutUs() {
       />
 
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
-        <div className="flex items-center mb-16 md:mb-20" style={{ minHeight: "520px", gap: "0" }}>
+        <div className="flex flex-col md:flex-row items-center mb-0 md:mb-20 gap-6 md:gap-0 md:min-h-[520px]">
 
           {/* ── Left Column ── */}
           <div
             ref={textContainerRef}
-            className="flex flex-col justify-center text-left flex-shrink-0"
-            style={{ width: "42%", paddingRight: "48px" }}
+            className="flex flex-col justify-center text-left w-full md:w-[42%] pr-0 md:pr-12 flex-shrink-0"
           >
             <h2
               className="font-display font-black uppercase leading-none"
-              style={{ fontSize: "clamp(2.8rem,5vw,4.5rem)", color: "#0E2A45", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "clamp(2.2rem,5vw,4.5rem)", color: "#0E2A45", letterSpacing: "-0.02em" }}
             >
               About Us
             </h2>
-            <div style={{ width: "88px", height: "3px", background: "#0E2A45", marginTop: "14px", marginBottom: "30px" }} />
+            <div 
+              className="w-[88px] h-[3px] mt-3.5 mb-6 md:mb-8" 
+              style={{ background: "#0E2A45" }} 
+            />
 
             <p
-              className="font-body italic leading-relaxed"
-              style={{ fontSize: "clamp(0.95rem,1.2vw,1.15rem)", color: "#4A5568", maxWidth: "460px", marginBottom: "38px" }}
+              className="font-body italic leading-relaxed mb-6 md:mb-10 text-justify md:text-left"
+              style={{ fontSize: "clamp(0.95rem,1.2vw,1.15rem)", color: "#4A5568", maxWidth: "460px" }}
             >
               We deliver uncompromising engineering excellence by integrating advanced production
               technologies. We provide our clients with absolute precision, speed, and scalable
@@ -268,26 +269,19 @@ export default function AboutUs() {
           {/* ── Right visual area — stretches to right viewport edge ── */}
           <div
             ref={visualContainerRef}
-            className="relative flex-1"
-            style={{ height: "520px" }}
+            className="relative w-full md:flex-1 h-[340px] sm:h-[420px] md:h-[520px]"
           >
 
             {/*
               BLUE PILL
               - Positioned so its right edge bleeds off screen
-              - Left edge sits ~30% into this column so blobs can overlap it
-              - border-radius: large value = true capsule/stadium shape
+              - Left edge sits ~20% (mobile) to ~28% (desktop) into this column so blobs can overlap it
+              - border-radius: responsive capsule/stadium shape
             */}
             <div
-              className="absolute overflow-hidden"
+              className="absolute overflow-hidden rounded-[180px] sm:rounded-[240px] md:rounded-[280px] left-[20%] md:left-[28%] right-[-24px] md:right-[-60px] top-0 bottom-0 z-[2]"
               style={{
-                top: 0,
-                bottom: 0,
-                left: "28%",       /* starts ~28% into the right column */
-                right: "-60px",    /* bleeds past the viewport right edge */
-                borderRadius: "280px 280px 280px 280px", /* full capsule */
                 background: "#0D3655",
-                zIndex: 2,
               }}
             >
               {/* Image fills the pill */}
@@ -311,13 +305,7 @@ export default function AboutUs() {
               We extend them beyond the pill to peek out at the right.
             */}
             <svg
-              className="about-float absolute pointer-events-none"
-              style={{
-                top: "4%",
-                right: "-40px",
-                width: "13%",
-                zIndex: 3,   /* in front of pill so they show */
-              }}
+              className="about-float absolute pointer-events-none w-[18%] md:w-[13%] right-[-16px] md:right-[-40px] top-[4%] z-[3]"
               viewBox="0 0 80 360"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -340,15 +328,10 @@ export default function AboutUs() {
               Centered so the navy blob and berry stem overlap it.
             */}
             <div
-              className="about-float absolute rounded-full"
+              className="about-float absolute rounded-full w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[190px] md:h-[190px] bottom-[20px] md:bottom-[30px] left-[5%] md:left-[10%] z-[4]"
               style={{
-                width: "190px",
-                height: "190px",
-                bottom: "30px",
-                left: "10%",
                 background: "#C5C1BA",
                 opacity: 0.8,
-                zIndex: 4,
               }}
             />
 
@@ -357,16 +340,11 @@ export default function AboutUs() {
               Overlaps the grey circle — offset slightly right+down from circle center.
             */}
             <div
-              className="about-float absolute"
+              className="about-float absolute w-[85px] h-[105px] sm:w-[105px] sm:h-[130px] md:w-[130px] md:h-[160px] bottom-[15px] md:bottom-[22px] left-[9%] md:left-[14%] z-[5]"
               style={{
-                width: "130px",
-                height: "160px",
-                bottom: "22px",
-                left: "14%",
                 background: "#071F30",
                 borderRadius: "50%",
                 opacity: 0.94,
-                zIndex: 5,
               }}
             />
 
@@ -375,14 +353,7 @@ export default function AboutUs() {
               Centred over the navy blob.
             */}
             <svg
-              className="about-float absolute pointer-events-none"
-              style={{
-                bottom: "16px",
-                left: "13.5%",
-                width: "65px",
-                height: "160px",
-                zIndex: 6,
-              }}
+              className="about-float absolute pointer-events-none bottom-[10px] md:bottom-[16px] left-[8.5%] md:left-[13.5%] w-[45px] md:w-[65px] h-[110px] md:h-[160px] z-[6]"
               viewBox="0 0 65 160"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -405,14 +376,7 @@ export default function AboutUs() {
 
             {/* MINT SPARKLE — bottom-right, inside the pill area */}
             <div
-              className="absolute pointer-events-none"
-              style={{
-                bottom: "15%",
-                right: "6%",
-                width: "18px",
-                height: "18px",
-                zIndex: 10,
-              }}
+              className="absolute pointer-events-none bottom-[15%] right-[6%] w-[14px] md:w-[18px] h-[14px] md:h-[18px] z-[10]"
             >
               <svg viewBox="0 0 24 24" fill="none">
                 <path
@@ -426,7 +390,7 @@ export default function AboutUs() {
         </div>
 
         {/* ROW 2: Our Vision & Interactive Node Map */}
-        <div ref={visionSectionRef} className="border-t border-border-light pt-12">
+        <div ref={visionSectionRef} className="hidden md:block border-t border-border-light pt-12">
           
           {/* Header Description */}
           <div className="max-w-[850px] mx-auto text-center mb-16">

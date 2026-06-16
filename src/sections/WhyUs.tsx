@@ -97,11 +97,11 @@ export default function WhyUs() {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} id="about" className="w-full bg-off-white py-16 md:py-20 overflow-hidden border-b border-border-light/10">
+    <section ref={sectionRef} id="about" className="w-full bg-off-white pt-8 pb-4 md:py-20 overflow-hidden border-b border-border-light/10">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
         
         {/* Split Section Header matching mosey split layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 md:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8 md:mb-24">
           <div className="lg:col-span-5">
             <p className="font-body font-bold text-xs uppercase tracking-widest text-forest mb-3">
               Why Partner With Us
@@ -118,7 +118,7 @@ export default function WhyUs() {
         </div>
 
         {/* Workflow Timeline Container */}
-        <div className="relative mt-12">
+        <div className="relative mt-6 md:mt-12">
           
           {/* Connecting Line - Desktop (Horizontal) */}
           <div className="absolute top-[28px] left-[12.5%] w-[75%] h-[2px] hidden md:block z-0 pointer-events-none">
@@ -138,7 +138,7 @@ export default function WhyUs() {
           </div>
 
           {/* Connecting Line - Mobile (Vertical) */}
-          <div className="absolute left-[24px] top-[40px] bottom-[40px] w-[2px] block md:hidden z-0 pointer-events-none">
+          <div className="absolute left-1/2 -translate-x-1/2 top-[40px] bottom-[40px] w-[2px] block md:hidden z-0 pointer-events-none">
             <svg className="w-full h-full overflow-visible" fill="none">
               <line
                 ref={verticalLineRef}
@@ -160,10 +160,10 @@ export default function WhyUs() {
               <div
                 key={step.number}
                 ref={(el) => { stepRefs.current[index] = el; }}
-                className="flex flex-col md:items-center text-left md:text-center group"
+                className="flex flex-col items-center text-center group"
               >
                 {/* Step Circle & Number */}
-                <div className="flex md:justify-center items-center mb-6 md:mb-8">
+                <div className="flex justify-center items-center mb-6 md:mb-8">
                   <div className="w-14 h-14 rounded-full bg-white border-2 border-forest/20 text-forest flex items-center justify-center font-display font-bold text-lg shadow-sm group-hover:border-forest group-hover:bg-forest group-hover:text-white transition-all duration-300 relative z-20">
                     {step.number}
                   </div>

@@ -85,7 +85,7 @@ export default function CaseStudies() {
     <section
       ref={sectionRef}
       id="case-studies"
-      className="w-full bg-off-white py-14 md:py-16"
+      className="w-full bg-off-white pt-4 pb-14 md:py-16"
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
         {/* Header */}

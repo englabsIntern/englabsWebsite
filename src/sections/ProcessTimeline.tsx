@@ -194,7 +194,7 @@ export default function ProcessTimeline() {
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-24">
+        <div className="text-center mb-6 md:mb-24">
           <p className="font-body font-light text-xs uppercase tracking-widest text-[#56E5B9] mb-3">
             Our Process
           </p>

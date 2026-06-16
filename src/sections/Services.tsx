@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CubeWireframeIcon, CompassIcon, CNCGearIcon, FactoryGearIcon } from "./Icons";
+import { Search, Heart, MessageSquare, MousePointer2, MoreHorizontal, Star } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -211,8 +212,32 @@ const FileIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const mobileWhiteboardConfigs = [
+  {
+    bg: "bg-[#FFF5EE] border-[#FFE5D5]",
+    tilt: "rotate-[-2deg]",
+    shift: "-translate-x-1"
+  },
+  {
+    bg: "bg-[#F0F5FA] border-[#DCE8F5]",
+    tilt: "rotate-[1.5deg]",
+    shift: "translate-x-1"
+  },
+  {
+    bg: "bg-[#FAF0FC] border-[#EEDBF5]",
+    tilt: "rotate-[-1deg]",
+    shift: "-translate-x-1.5"
+  },
+  {
+    bg: "bg-[#EEFAF4] border-[#D8F3E5]",
+    tilt: "rotate-[2deg]",
+    shift: "translate-x-1.5"
+  }
+];
+
 export default function Services() {
   const [activeIndustry, setActiveIndustry] = useState("All");
+  const [activeMobileCard, setActiveMobileCard] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const quoteRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -359,12 +384,12 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="w-full bg-off-white py-16 md:py-20 border-b border-border-light/10"
+      className="w-full bg-off-white pt-2 pb-6 md:py-20 border-b border-border-light/10"
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
         
         {/* Capabilities Section Header matching mosey split layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-6 md:mb-16">
           <div className="lg:col-span-5">
             <p className="font-body font-bold text-xs uppercase tracking-widest text-forest mb-3">
               Capabilities In-House
@@ -381,7 +406,7 @@ export default function Services() {
         </div>
 
         {/* Industry Filter badging */}
-        <div className="flex flex-wrap gap-2 mb-16 relative z-20">
+        <div className="flex flex-wrap gap-2 mb-6 md:mb-16 relative z-20">
           {industries.map((industry) => (
             <button
               key={industry}
@@ -397,7 +422,7 @@ export default function Services() {
         </div>
 
         {/* Services staggered stack */}
-        <div className="relative w-full py-8">
+        <div className="relative w-full py-8 hidden md:block">
 
           {/* Map-style Dotted Connector Line */}
           <svg
@@ -523,11 +548,107 @@ export default function Services() {
 
         </div>
 
+        {/* Mobile services sticky notes stack */}
+        <div className="relative w-full pt-0 pb-4 px-1 mb-4 block md:hidden">
+          {/* Sticky notes grid */}
+          <div className="relative z-10 flex flex-col gap-8 w-full min-h-[400px]">
+            {services.map((service, index) => {
+              const isHighlighted = activeIndustry === "All" || service.tags.includes(activeIndustry);
+              const config = mobileWhiteboardConfigs[index];
+              const isActive = activeMobileCard === index;
+
+              return (
+                <div 
+                  key={service.title} 
+                  className={`w-full flex justify-center transition-all duration-300 relative ${
+                    isHighlighted ? "opacity-100" : "opacity-30 pointer-events-none"
+                  }`}
+                >
+                  {/* Sticky Note */}
+                  <div
+                    onClick={() => setActiveMobileCard(isActive ? null : index)}
+                    className={`w-full max-w-[325px] p-5 rounded-2xl border transition-all duration-300 cursor-pointer relative select-none ${config.bg} ${
+                      isActive 
+                        ? "shadow-[0_12px_28px_rgba(0,0,0,0.06)] rotate-0 scale-[1.02] z-30" 
+                        : `shadow-[0_4px_16px_rgba(0,0,0,0.03)] ${config.tilt} ${config.shift} hover:scale-[1.01]`
+                    }`}
+                  >
+                    {/* Header */}
+                    <div className="flex justify-between items-center mb-3 border-b border-black/5 pb-2">
+                      <span className="font-serif italic text-2xl font-bold opacity-60">
+                        0{index + 1}
+                      </span>
+                      <span className="font-body text-[8px] font-bold uppercase tracking-wider text-text-muted mt-1 bg-white/60 px-2.5 py-0.5 rounded border border-black/5">
+                        {service.subtitle}
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div>
+                      <h3 className="font-display font-black text-lg text-near-black tracking-tight mt-1 mb-1.5">
+                        {service.title}
+                      </h3>
+                      <p className="font-body text-[11px] text-text-secondary leading-relaxed mb-4">
+                        {service.summary}
+                      </p>
+                    </div>
+
+                    {/* Expandable blueprints & specs */}
+                    <div 
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        isActive ? "max-h-[500px] opacity-100 border-t border-black/10 pt-4 mt-3" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      {/* Specs */}
+                      <div className="space-y-3 mb-4">
+                        <span className="block font-display font-bold text-[9px] uppercase tracking-wider text-near-black">
+                          Technical Specifications
+                        </span>
+                        <div className="grid grid-cols-2 gap-x-3 gap-y-2">
+                          {service.specs.map((spec) => (
+                            <div key={spec.label} className="flex flex-col border-b border-black/5 pb-0.5">
+                              <span className="font-body text-[7px] font-semibold uppercase tracking-wider text-text-muted">
+                                {spec.label}
+                              </span>
+                              <span className="font-body text-[9px] font-bold text-text-primary mt-0.5 whitespace-pre-line leading-tight">
+                                {spec.value}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Blueprint frame */}
+                      <div className="w-full aspect-square rounded-xl bg-white border border-black/5 p-3 flex items-center justify-center shadow-inner relative overflow-hidden mb-3">
+                        {service.graphic}
+                      </div>
+
+                      <div className="text-center font-body text-[9px] font-bold text-forest bg-forest/5 py-1.5 rounded-lg border border-forest/10 mt-2">
+                        Click note to collapse
+                      </div>
+                    </div>
+
+                    {/* Help hint when collapsed */}
+                    {!isActive && (
+                      <div className="flex justify-center items-center gap-1 font-body text-[9px] font-bold text-forest/70 mt-3 pt-2 border-t border-black/5">
+                        <span>Tap note to inspect specs</span>
+                        <svg className="w-2.5 h-2.5 animate-bounce" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M4 6 L8 10 L12 6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Instant Quote Section */}
         <div
           ref={quoteRef}
           id="quote-section"
-          className="pt-12 border-t border-border-light/20 scroll-mt-24 mt-8 relative overflow-hidden"
+          className="pt-6 md:pt-12 border-t border-border-light/20 scroll-mt-24 mt-4 md:mt-8 relative overflow-hidden"
         >
           {/* Decorative background isometric SVGs */}
           <div className="absolute left-[-50px] top-[40%] opacity-20 pointer-events-none hidden xl:block select-none">
