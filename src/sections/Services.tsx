@@ -3,7 +3,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CubeWireframeIcon, CompassIcon, CNCGearIcon, FactoryGearIcon } from "./Icons";
-import { Search, Heart, MessageSquare, MousePointer2, MoreHorizontal, Star } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 

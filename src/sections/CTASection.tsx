@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRightIcon } from "./Icons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,17 +35,19 @@ export default function CTASection() {
         background: "linear-gradient(135deg, #1A4A3A 0%, #0D1B17 100%)",
       }}
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-16 pb-8 md:py-20 text-center">
-        <h2 className="cta-animate font-display font-bold text-3xl md:text-5xl lg:text-6xl text-off-white tracking-tight mb-6">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-10 pb-6 md:py-20 text-center">
+        <h2 className="cta-animate font-display font-bold text-3xl md:text-5xl lg:text-6xl text-off-white tracking-tight mb-4 md:mb-6">
           Ready to Start Your Project?
         </h2>
-        <p className="cta-animate font-body text-base md:text-lg text-silver max-w-[560px] mx-auto mb-10">
+        <p className="cta-animate font-body text-base md:text-lg text-silver max-w-[560px] mx-auto mb-6 md:mb-10">
           Upload your CAD file for an instant quote, or talk to our engineering
           team about your requirements.
         </p>
-        <button className="cta-animate inline-flex items-center gap-3 px-10 py-4 rounded-full font-body font-semibold text-base text-off-white bg-forest hover:brightness-110 transition-all duration-200 group">
+        <button className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-body font-semibold text-base text-off-white bg-forest hover:brightness-110 transition-all duration-200 group">
           Upload Your CAD
-          <ArrowRightIcon className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+          <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </button>
       </div>
     </section>
