@@ -1,0 +1,147 @@
+@font-face {
+  font-family: "Aller";
+  src: url("https://db.onlinewebfonts.com/t/28f1802e795440bad4252411b2865b61.woff2") format("woff2"),
+       url("https://db.onlinewebfonts.com/t/28f1802e795440bad4252411b2865b61.woff") format("woff"),
+       url("https://db.onlinewebfonts.com/t/28f1802e795440bad4252411b2865b61.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aller";
+  src: url("https://db.onlinewebfonts.com/t/3bf7501ddcf8338bc9cdcedad10914cb.woff2") format("woff2"),
+       url("https://db.onlinewebfonts.com/t/3bf7501ddcf8338bc9cdcedad10914cb.woff") format("woff"),
+       url("https://db.onlinewebfonts.com/t/3bf7501ddcf8338bc9cdcedad10914cb.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aller";
+  src: url("https://db.onlinewebfonts.com/t/0ddd355012a1ac3b118d3a1cf6813eab.woff2") format("woff2"),
+       url("https://db.onlinewebfonts.com/t/0ddd355012a1ac3b118d3a1cf6813eab.woff") format("woff"),
+       url("https://db.onlinewebfonts.com/t/0ddd355012a1ac3b118d3a1cf6813eab.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 206 76% 23%;
+    --primary-foreground: 40 20% 95%;
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 40 10% 92%;
+    --muted-foreground: 0 0% 35%;
+    --accent: 40 10% 92%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 8% 87%;
+    --input: 40 8% 87%;
+    --ring: 206 76% 23%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Aller', sans-serif;
+    font-weight: 300;
+    background-color: #F5F3EE;
+    color: #1A1A1A;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  p, span, li, a, div {
+    font-weight: 300;
+  }
+}
+
+@layer components {
+  .shimmer-hero {
+    position: relative;
+    font-family: "Aller", sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 6vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    overflow: hidden;
+    background: linear-gradient(90deg, #071F30 0%, #56E5B9 35%, #F5F3EE 50%, #56E5B9 65%, #071F30 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: shimmer-sweep 4s linear infinite;
+  }
+
+  @keyframes shimmer-sweep {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @supports not (-webkit-background-clip: text) {
+    .shimmer-hero {
+      color: #F5F3EE;
+      -webkit-text-fill-color: #F5F3EE;
+      background: none;
+    }
+  }
+
+  .text-shadow-hero {
+    text-shadow: 0 0 20px rgba(13, 27, 23, 0.8);
+  }
+
+  .nav-glass {
+    background: rgba(245, 243, 238, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .frosted-card {
+    background: rgba(245, 243, 238, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(192, 197, 204, 0.2);
+  }
+
+  .clip-diagonal {
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
